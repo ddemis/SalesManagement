@@ -1,0 +1,16 @@
+*.dll
+*.vspscc
+*.vssscc
+*.publishproj
+*.dbml
+*.refactoring
+*.pdb
+*.error
+*.dgml
+*.jfm
+
+bin/
+obj/
+bin-release/
+bin-debug/
+/packages/*
