@@ -2,6 +2,7 @@
 using SM.Api.AutoMapper;
 using SM.Api.Models.Districts;
 using SM.Api.Models.Stores;
+using SM.Business.Entities.Districts;
 using SM.Business.Entities.Stores;
 using SM.Business.Services.Districts.CustomEntities;
 using System;
@@ -17,6 +18,7 @@ namespace SM.Api.App_Start
         {
             Action<IMapperConfigurationExpression> configuration = cfg =>
             {
+                cfg.CreateMap<District, DistrictModel>();
                 cfg.CreateMap<DistrictDetails, DistrictDetailsModel>();
                 cfg.CreateMap<DistrictDetailsResult, DistrictDetailsResultModel>();
                 cfg.CreateMap<SalesManDetails, SalesManDetailsModel>();

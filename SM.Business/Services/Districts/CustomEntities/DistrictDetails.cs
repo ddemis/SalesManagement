@@ -10,7 +10,7 @@ namespace SM.Business.Services.Districts.CustomEntities
     public class DistrictDetails
     {
         public int DistrictId { get; set; }
-        public string DistrictName { get; set; }
+        //public string DistrictName { get; set; }
         
         public List<Store> Stores { get; set; }
         public List<SalesManDetails> SalesMenDetails { get; set; }

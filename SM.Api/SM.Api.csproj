@@ -209,6 +209,7 @@
     </Compile>
     <Compile Include="Models\Districts\DistrictDetailsModel.cs" />
     <Compile Include="Models\Districts\DistrictDetailsResultModel.cs" />
+    <Compile Include="Models\Districts\DistrictModel.cs" />
     <Compile Include="Models\Districts\SalesManDetailsModel.cs" />
     <Compile Include="Models\Stores\StoreModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,5 +1,6 @@
 ﻿using SM.Business.Entities.Districts;
 using SM.Business.Services.Districts.CustomEntities;
+using System.Collections.Generic;
 
 namespace SM.Business.Repository.Districts
 {
@@ -7,6 +8,10 @@ namespace SM.Business.Repository.Districts
     {
         bool AddDistrict(District district);
 
-        DistrictDetailsResult GetDistrictDetails(int startRowNo, int noOfRowsToGet);
+        IList<District> GetAllDistricts();
+
+        DistrictDetails GetDistrictDetailsByDistrictId(int districtId);
+
+        //DistrictDetailsResult GetDistrictDetails(int startRowNo, int noOfRowsToGet);
     }
 }

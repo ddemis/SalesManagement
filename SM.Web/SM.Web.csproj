@@ -145,6 +145,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DistrictsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -152,6 +153,7 @@
     </Compile>
     <Compile Include="Models\Districts\DistrictDetailsModel.cs" />
     <Compile Include="Models\Districts\DistrictDetailsResultModel.cs" />
+    <Compile Include="Models\Districts\DistrictModel.cs" />
     <Compile Include="Models\Districts\SalesManDetailsModel.cs" />
     <Compile Include="Models\Districts\SalesManResponsabilityTypes.cs" />
     <Compile Include="Models\Stores\StoreModel.cs" />
@@ -194,10 +196,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Districts\Index.cshtml" />
+    <Content Include="Views\Districts\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Districts\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

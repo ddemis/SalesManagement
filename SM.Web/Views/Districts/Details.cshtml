@@ -1,0 +1,69 @@
+﻿@model SM.Web.Models.Districts.DistrictDetailsModel
+
+<p>
+    District Details
+</p>
+<p> <b>Stores</b>   </p>
+<table class="table">
+    <tr>
+        <th>
+            Store ID
+        </th>
+        <th>
+            Store Name
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Stores)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.StoreId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Name)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p> <b>Sales Men</b>   </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesMenDetails[0].SalesManId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesMenDetails[0].FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesMenDetails[0].LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalesMenDetails[0].RepsonsabilityType)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.SalesMenDetails)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesManId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RepsonsabilityType)
+            </td>
+            
+        </tr>
+    }
+
+</table>
