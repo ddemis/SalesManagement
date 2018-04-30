@@ -2,7 +2,6 @@
 using SM.Api.AutoMapper;
 using SM.Api.Models.Districts;
 using SM.Business.Services.Districts;
-using SM.Business.Services.Districts.CustomEntities;
 using System.Collections.Generic;
 using System.Web.Http;
 
@@ -16,6 +15,10 @@ namespace SM.Api.Controllers
             this.districtService = districtService;
         }
 
+        /// <summary>
+        /// Get all available districts.
+        /// </summary>
+        /// <returns>A list containing all districts.</returns>
         [HttpGet]
         public IList<DistrictModel> GetAllDistricts()
         {
@@ -27,6 +30,11 @@ namespace SM.Api.Controllers
             return districtsModel;
         }
 
+        /// <summary>
+        /// Get District details by district Id (Stores and associated sales men).
+        /// </summary>
+        /// <param name="districtId">District Id</param>
+        /// <returns>All the stores belonging to a district and the sales men associated with the district.</returns>
         [HttpGet]
         public DistrictDetailsModel GetDistrictDetailsById(int districtId)
         {
@@ -36,16 +44,5 @@ namespace SM.Api.Controllers
 
             return districtDetailsModel;
         }
-
-        //[HttpGet]
-        //public DistrictDetailsResultModel GetDistricts(int startRowNo, int noOfRowsToGet)
-        //{
-        //    //TODO add check for parameters
-        //    var districts = districtService.GetDistrictDetails(startRowNo, noOfRowsToGet);
-
-        //    DistrictDetailsResultModel districDetailsResultModel = MapperConfig.Mapper.Map<DistrictDetailsResultModel>(districts);
-
-        //    return districDetailsResultModel;
-        //}
     }
 }
