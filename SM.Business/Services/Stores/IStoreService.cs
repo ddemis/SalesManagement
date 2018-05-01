@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace SM.Business.Services.Stores
 {
-    internal class StoreService : IStoreService
+    public interface IStoreService
     {
+
     }
 }

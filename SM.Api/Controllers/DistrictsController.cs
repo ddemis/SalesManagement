@@ -5,6 +5,7 @@ using SM.Business.Services.Districts;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace SM.Api.Controllers
@@ -22,10 +23,10 @@ namespace SM.Api.Controllers
         /// </summary>
         /// <returns>A list containing all districts.</returns>
         [HttpGet]
-        public IList<DistrictModel> GetAllDistricts()
+        public async Task<IList<DistrictModel>> GetAllDistricts()
         {
             
-            var districts = districtService.GetAllDistricts();
+            var districts = await districtService.GetAllDistricts();
 
             IList<DistrictModel> districtsModel = MapperConfig.Mapper.Map<IList<DistrictModel>>(districts);
 
@@ -38,10 +39,10 @@ namespace SM.Api.Controllers
         /// <param name="districtId">District Id</param>
         /// <returns>All the stores belonging to a district and the sales men associated with the district.</returns>
         [HttpGet]
-        public DistrictDetailsModel GetDistrictDetailsById(int districtId)
+        public async Task<DistrictDetailsModel> GetDistrictDetailsById(int districtId)
         {
             //TODO - validate districtId
-            var districts = districtService.GetDistrictDetailsById(districtId);
+            var districts = await districtService.GetDistrictDetailsById(districtId);
 
             DistrictDetailsModel districtDetailsModel = MapperConfig.Mapper.Map<DistrictDetailsModel>(districts);
 

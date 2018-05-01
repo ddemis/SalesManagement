@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SM.Business.Repository.SalesMen
+namespace SM.Business.Services.SalesMen
 {
-    public interface ISalesManRepository
+    public interface ISalesManService
     {
         Task<IList<SalesManDetails>> GetSalesMenDetails();
     }

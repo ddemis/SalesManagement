@@ -9,13 +9,6 @@ using System.Threading.Tasks;
 
 namespace SM.Business.Services.Districts
 {
-    public interface IDistrictService
-    {
-        bool AddDistrict(District district);
-        IList<District> GetAllDistricts();
-        DistrictDetails GetDistrictDetailsById(int districtId);
-    }
-
     internal class DistrictService : IDistrictService
     {
         private IDistrictRepository districtRepository;
@@ -24,19 +17,19 @@ namespace SM.Business.Services.Districts
             this.districtRepository = districtRepository;
         }
 
-        public bool AddDistrict(District district)
+        public async Task<bool> AddDistrict(District district)
         {
-            return districtRepository.AddDistrict(district);
+            return await districtRepository.AddDistrict(district);
         }
 
-        public IList<District> GetAllDistricts()
+        public async Task<IList<District>> GetAllDistricts()
         {
-            return districtRepository.GetAllDistricts();
+            return await districtRepository.GetAllDistricts();
         }
 
-        public DistrictDetails GetDistrictDetailsById(int districtId)
+        public async Task<DistrictDetails> GetDistrictDetailsById(int districtId)
         {
-            return districtRepository.GetDistrictDetailsByDistrictId(districtId);
+            return await districtRepository.GetDistrictDetailsByDistrictId(districtId);
         }
     }
 }

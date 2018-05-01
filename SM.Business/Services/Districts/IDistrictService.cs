@@ -3,14 +3,13 @@ using SM.Business.Services.Districts.CustomEntities;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SM.Business.Repository.Districts
+namespace SM.Business.Services.Districts
 {
-    public interface IDistrictRepository
+    public interface IDistrictService
     {
         Task<bool> AddDistrict(District district);
-
         Task<IList<District>> GetAllDistricts();
-
-        Task<DistrictDetails> GetDistrictDetailsByDistrictId(int districtId);
+        Task<DistrictDetails> GetDistrictDetailsById(int districtId);
     }
+
 }

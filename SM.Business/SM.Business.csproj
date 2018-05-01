@@ -52,10 +52,14 @@
     <Compile Include="Repository\Stores\IStoreRepository.cs" />
     <Compile Include="Services\Districts\CustomEntities\DistrictDetails.cs" />
     <Compile Include="Services\Districts\CustomEntities\DistrictDetailsResult.cs" />
+    <Compile Include="Services\Districts\IDistrictService.cs" />
     <Compile Include="Services\SalesMen\CustomEntities\SalesManDetails.cs" />
     <Compile Include="Services\Districts\DistrictService.cs" />
+    <Compile Include="Services\SalesMen\ISalesManDistrictService.cs" />
+    <Compile Include="Services\SalesMen\ISalesManService.cs" />
     <Compile Include="Services\SalesMen\SalesManDistrictService.cs" />
     <Compile Include="Services\SalesMen\SalesManService.cs" />
+    <Compile Include="Services\Stores\IStoreService.cs" />
     <Compile Include="Services\Stores\StoreService.cs" />
   </ItemGroup>
   <ItemGroup />

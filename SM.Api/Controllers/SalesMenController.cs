@@ -23,9 +23,9 @@ namespace SM.Api.Controllers
         /// </summary>
         /// <returns>A list of sales man details, belonging district and responsability type.</returns>
         [HttpGet]
-        public IList<SalesManDetailsModel> GetSalesMenDetails()
+        public async Task<IList<SalesManDetailsModel>> GetSalesMenDetails()
         {
-            var districts = salesManService.GetSalesMenDetails();
+            var districts = await salesManService.GetSalesMenDetails();
 
             IList<SalesManDetailsModel> salesManDetailsModel = MapperConfig.Mapper.Map<IList<SalesManDetailsModel>>(districts);
 
@@ -39,13 +39,8 @@ namespace SM.Api.Controllers
             //if (!ModelState.IsValid)
             //  return BadRequest(ModelState);
 
-
             IList<SalesManDetails> salesManDetails = MapperConfig.Mapper.Map<IList<SalesManDetails>>(salesMenDetailsModel);
 
-            salesManDetails = new List<SalesManDetails>() {
-                new SalesManDetails { DistrictId = 1, SalesManId = 2, RepsonsabilityType = null },
-                new SalesManDetails { DistrictId = 1, SalesManId = 5, RepsonsabilityType = Business.Entities.SalesMen.SalesManResponsabilityTypes.Secondary }
-            };
 
             var result = await salesManDistrictService.AddUpdateSalesManDistrictAndResponsability(salesManDetails);
             return result;
