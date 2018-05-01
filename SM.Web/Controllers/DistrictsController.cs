@@ -40,6 +40,10 @@ namespace SM.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Settings(DistrictSettingsModel districtSettingsModel)
         {
+            //TODO
+            //if (!ModelState.IsValid)
+            //  return BadRequest(ModelState);
+
             districtSettingsModel.SalesManDetailsModel.ForEach(o => o.DistrictId = districtSettingsModel.DistrictId);
             var test = await PostAsync("SalesMen/UpdateSalesManDistrictAndResponsability", districtSettingsModel.SalesManDetailsModel);
 

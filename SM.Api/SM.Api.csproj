@@ -213,6 +213,7 @@
     <Compile Include="Models\SalesMen\SalesManDetailsModel.cs" />
     <Compile Include="Models\Stores\StoreModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\InputDataValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />

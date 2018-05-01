@@ -1,5 +1,6 @@
 ﻿using SM.Api.AutoMapper;
 using SM.Api.Models.SalesMen;
+using SM.Api.Validators;
 using SM.Business.Services.SalesMen;
 using SM.Business.Services.SalesMen.CustomEntities;
 using System;
@@ -38,7 +39,7 @@ namespace SM.Api.Controllers
             }
             catch (Exception ex)
             {
-                var resp = new HttpResponseMessage(HttpStatusCode.NotFound)
+                var resp = new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     Content = new StringContent(ex.Message)
                 };
@@ -46,12 +47,23 @@ namespace SM.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Save sales men belonging to a district and their responsability.
+        /// </summary>
+        /// <param name="salesMenDetailsModel"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<bool> UpdateSalesManDistrictAndResponsability(IList<SalesManDetailsModel> salesMenDetailsModel)
         {
-            //TODO
-            //if (!ModelState.IsValid)
-            //  return BadRequest(ModelState);
+            
+            if (!InputDataValidator.ValidateSalesMenDistrictRelation(salesMenDetailsModel))
+            {
+                var resp = new HttpResponseMessage(HttpStatusCode.BadRequest)
+                {
+                    Content = new StringContent("The District must have a primary responsable sales man.")
+                };
+                throw new HttpResponseException(resp);
+            }
 
             try
             {
@@ -62,7 +74,7 @@ namespace SM.Api.Controllers
             }
             catch (Exception ex)
             {
-                var resp = new HttpResponseMessage(HttpStatusCode.NotFound)
+                var resp = new HttpResponseMessage(HttpStatusCode.InternalServerError)
                 {
                     Content = new StringContent(ex.Message)
                 };

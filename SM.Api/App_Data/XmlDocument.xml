@@ -500,5 +500,12 @@
             </summary>
             <returns>A list of sales man details, belonging district and responsability type.</returns>
         </member>
+        <member name="M:SM.Api.Controllers.SalesMenController.UpdateSalesManDistrictAndResponsability(System.Collections.Generic.IList{SM.Api.Models.SalesMen.SalesManDetailsModel})">
+            <summary>
+            Save sales men belonging to a district and their responsability.
+            </summary>
+            <param name="salesMenDetailsModel"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>
