@@ -6,6 +6,6 @@ namespace SM.Business.Services.SalesMen
 {
     public interface ISalesManService
     {
-        Task<IList<SalesManDetails>> GetSalesMenDetails();
+        Task<IList<SalesManDetails>> GetSalesMenDetailsAsync(int districtId);
     }
 }

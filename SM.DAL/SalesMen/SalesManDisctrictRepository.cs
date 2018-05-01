@@ -10,7 +10,7 @@ namespace SM.DAL.SalesMen
 {
     internal class SalesManDistrictRepository : ISalesManDistrictRepository
     {
-        public async Task<bool> AddUpdateSalesManDistrictAndResponsability(IList<SalesManDetails> salesMenDetails)
+        public async Task<bool> AddUpdateSalesManDistrictAndResponsabilityAsync(IList<SalesManDetails> salesMenDetails)
         {
             var salesMenDetailsXml = new XElement("SalesMenDetails");
             
@@ -31,7 +31,7 @@ namespace SM.DAL.SalesMen
                 await context.Database.ExecuteSqlCommandAsync("SalesMen_Districts_AddUpdate @salesMenDetailsXml", salesMenDetailsXmlParam);
             }
 
-            return false;
+            return true;
         }
     }
 }

@@ -17,19 +17,44 @@ namespace SM.Business.Services.Districts
             this.districtRepository = districtRepository;
         }
 
-        public async Task<bool> AddDistrict(District district)
+        public async Task<bool> AddDistrictAsync(District district)
         {
-            return await districtRepository.AddDistrict(district);
+            try
+            {
+                return await districtRepository.AddDistrictAsync(district);
+            }
+            catch(Exception ex)
+            {
+                //log exception
+                throw ex;
+            }
+            
         }
 
-        public async Task<IList<District>> GetAllDistricts()
+        public async Task<IList<District>> GetAllDistrictsAsync()
         {
-            return await districtRepository.GetAllDistricts();
+            try
+            {
+                return await districtRepository.GetAllDistrictsAsync();
+            }
+            catch(Exception ex)
+            {
+                //log exception
+                throw ex;
+            }
         }
 
-        public async Task<DistrictDetails> GetDistrictDetailsById(int districtId)
+        public async Task<DistrictDetails> GetDistrictDetailsByIdAsync(int districtId)
         {
-            return await districtRepository.GetDistrictDetailsByDistrictId(districtId);
+            try
+            {
+                return await districtRepository.GetDistrictDetailsByDistrictIdAsync(districtId);
+            }
+            catch(Exception ex)
+            {
+                //log exception
+                throw ex;
+            }
         }
     }
 }

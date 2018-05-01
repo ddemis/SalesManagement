@@ -7,10 +7,10 @@ namespace SM.Business.Repository.Districts
 {
     public interface IDistrictRepository
     {
-        Task<bool> AddDistrict(District district);
+        Task<bool> AddDistrictAsync(District district);
 
-        Task<IList<District>> GetAllDistricts();
+        Task<IList<District>> GetAllDistrictsAsync();
 
-        Task<DistrictDetails> GetDistrictDetailsByDistrictId(int districtId);
+        Task<DistrictDetails> GetDistrictDetailsByDistrictIdAsync(int districtId);
     }
 }

@@ -15,9 +15,11 @@ BEGIN
           RepsonsabilityTypeId int 'RepsonsabilityTypeId'))
     MERGE SalesMen_Districts t USING data s on s.DistrictId = t.DistrictId and s.SalesManId = t.SalesManId
 
-	WHEN MATCHED THEN UPDATE
+	WHEN MATCHED AND s.RepsonsabilityTypeId <> 0 THEN UPDATE
 	SET SalesManResponsabilityTypeId = (CASE s.RepsonsabilityTypeId WHEN 0 THEN null ELSE s.RepsonsabilityTypeId END)
 
-    WHEN NOT MATCHED BY TARGET THEN INSERT (SalesManId, DistrictId, SalesManResponsabilityTypeId)
+	WHEN MATCHED AND s.RepsonsabilityTypeId = 0 THEN DELETE
+
+    WHEN NOT MATCHED BY TARGET AND s.RepsonsabilityTypeId <> 0 THEN INSERT (SalesManId, DistrictId, SalesManResponsabilityTypeId)
     VALUES (s.SalesManId, s.DistrictId, s.RepsonsabilityTypeId);
 END

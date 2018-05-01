@@ -155,6 +155,7 @@
     <Compile Include="Models\Districts\DistrictDetailsModel.cs" />
     <Compile Include="Models\Districts\DistrictDetailsResultModel.cs" />
     <Compile Include="Models\Districts\DistrictModel.cs" />
+    <Compile Include="Models\Districts\DistrictSettingsModel.cs" />
     <Compile Include="Models\SalesMen\SalesManDetailsModel.cs" />
     <Compile Include="Models\SalesMen\SalesManResponsabilityTypes.cs" />
     <Compile Include="Models\Stores\StoreModel.cs" />

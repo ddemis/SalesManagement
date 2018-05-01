@@ -14,70 +14,44 @@ namespace SM.DAL.Districts
 {
     internal class DistrictRepository : IDistrictRepository
     {
-        public async Task<bool> AddDistrict(District district)
+        public async Task<bool> AddDistrictAsync(District district)
         {
-            try
+            using (var context = new RepositoryContext())
             {
-                using (var context = new RepositoryContext())
-                {
-                    context.Districts.Add(district);
-                    int result = await context.SaveChangesAsync();
-                    return result == 1;
-                }
-            }
-            catch(Exception ex)
-            {
+                context.Districts.Add(district);
+                int result = await context.SaveChangesAsync();
+                return result == 1;
+            }            
+        }
 
-                return false;
+        public async Task<IList<District>> GetAllDistrictsAsync()
+        {            
+            using (var context = new RepositoryContext())
+            {
+                return await context.Districts.ToListAsync();
             }
         }
 
-        public async Task<IList<District>> GetAllDistricts()
+        public async Task<DistrictDetails> GetDistrictDetailsByDistrictIdAsync(int districtId)
         {
-            //todo - contruiesc ceva resulturi cu mesaj de eroare + data
-            try
-            {
-                using (var context = new RepositoryContext())
-                {
-                    return await context.Districts.ToListAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                //todo - do not throw
-                throw ex;
-            }
-        }
-
-        public async Task<DistrictDetails> GetDistrictDetailsByDistrictId(int districtId)
-        {
-            //todo - contruiesc ceva resulturi cu mesaj de eroare + data
             DistrictDetails districtDetails = new DistrictDetails();
-            try
+            using (var context = new RepositoryContext())
             {
-                using (var context = new RepositoryContext())
-                {
-                    districtDetails.DistrictId = districtId;
-                    districtDetails.Stores = context.Stores.Where(o => o.DistrictId == districtId).ToList();
-                    districtDetails.SalesMenDetails = await (  from salesMan in context.SalesMen
-                                                               join salesManDistrict in context.SalesMenDistricts on salesMan.SalesManId equals salesManDistrict.SalesManId
-                                                               where salesManDistrict.DistrictId == districtId
-                                                               select new SalesManDetails
-                                                                       {
-                                                                           SalesManId = salesMan.SalesManId,
-                                                                           SalesUIId = 0,
-                                                                           FirstName = salesMan.FirstName,
-                                                                           LastName = salesMan.LastName,
-                                                                           RepsonsabilityType = (SalesManResponsabilityTypes)salesManDistrict.SalesManResponsabilityTypeId
-                                                                       }
-                                                               ).ToListAsync();
-                    return districtDetails;
-                }
-            }
-            catch (Exception ex)
-            {
-                //todo - do not throw
-                throw ex;
+                districtDetails.DistrictId = districtId;
+                districtDetails.Stores = context.Stores.Where(o => o.DistrictId == districtId).ToList();
+                districtDetails.SalesMenDetails = await (  from salesMan in context.SalesMen
+                                                            join salesManDistrict in context.SalesMenDistricts on salesMan.SalesManId equals salesManDistrict.SalesManId
+                                                            where salesManDistrict.DistrictId == districtId
+                                                            select new SalesManDetails
+                                                                    {
+                                                                        SalesManId = salesMan.SalesManId,
+                                                                        SalesUIId = 0,
+                                                                        FirstName = salesMan.FirstName,
+                                                                        LastName = salesMan.LastName,
+                                                                        RepsonsabilityType = (SalesManResponsabilityTypes)salesManDistrict.SalesManResponsabilityTypeId
+                                                                    }
+                                                            ).ToListAsync();
+                return districtDetails;
             }
         }
     }

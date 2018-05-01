@@ -7,9 +7,9 @@ namespace SM.Business.Services.Districts
 {
     public interface IDistrictService
     {
-        Task<bool> AddDistrict(District district);
-        Task<IList<District>> GetAllDistricts();
-        Task<DistrictDetails> GetDistrictDetailsById(int districtId);
+        Task<bool> AddDistrictAsync(District district);
+        Task<IList<District>> GetAllDistrictsAsync();
+        Task<DistrictDetails> GetDistrictDetailsByIdAsync(int districtId);
     }
 
 }

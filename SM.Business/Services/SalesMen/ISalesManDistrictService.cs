@@ -6,6 +6,6 @@ namespace SM.Business.Services.SalesMen
 {
     public interface ISalesManDistrictService
     {
-        Task<bool> AddUpdateSalesManDistrictAndResponsability(IList<SalesManDetails> salesMenDetails);
+        Task<bool> AddUpdateSalesManDistrictAndResponsabilityAsync(IList<SalesManDetails> salesMenDetails);
     }
 }

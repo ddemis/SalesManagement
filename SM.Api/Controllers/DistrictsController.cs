@@ -2,6 +2,7 @@
 using SM.Api.AutoMapper;
 using SM.Api.Models.Districts;
 using SM.Business.Services.Districts;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -25,12 +26,22 @@ namespace SM.Api.Controllers
         [HttpGet]
         public async Task<IList<DistrictModel>> GetAllDistricts()
         {
-            
-            var districts = await districtService.GetAllDistricts();
+            try
+            {
+                var districts = await districtService.GetAllDistrictsAsync();
 
-            IList<DistrictModel> districtsModel = MapperConfig.Mapper.Map<IList<DistrictModel>>(districts);
+                IList<DistrictModel> districtsModel = MapperConfig.Mapper.Map<IList<DistrictModel>>(districts);
 
-            return districtsModel;
+                return districtsModel;
+            }
+            catch(Exception ex)
+            {
+                var resp = new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent(ex.Message)
+                };
+                throw new HttpResponseException(resp);
+            }
         }
 
         /// <summary>
@@ -41,14 +52,22 @@ namespace SM.Api.Controllers
         [HttpGet]
         public async Task<DistrictDetailsModel> GetDistrictDetailsById(int districtId)
         {
-            //TODO - validate districtId
-            var districts = await districtService.GetDistrictDetailsById(districtId);
+            try
+            {
+                var districts = await districtService.GetDistrictDetailsByIdAsync(districtId);
 
-            DistrictDetailsModel districtDetailsModel = MapperConfig.Mapper.Map<DistrictDetailsModel>(districts);
-
-            throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.NotFound, ReasonPhrase = "dsfgdgdf"});
-
-            return districtDetailsModel;
+                DistrictDetailsModel districtDetailsModel = MapperConfig.Mapper.Map<DistrictDetailsModel>(districts);
+                
+                return districtDetailsModel;
+            }
+            catch(Exception ex)
+            {
+                var resp = new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent(ex.Message)
+                };
+                throw new HttpResponseException(resp);
+            }            
         }
     }
 }

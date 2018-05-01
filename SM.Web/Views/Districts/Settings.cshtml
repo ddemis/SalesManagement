@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SM.Web.Models.SalesMen.SalesManDetailsModel>
+﻿@model SM.Web.Models.Districts.DistrictSettingsModel
 
 using System.Linq;
 @{
@@ -13,47 +13,57 @@ using System.Linq;
 </p>
 @using (Html.BeginForm("Settings", "Districts", FormMethod.Post))
 {
+    @Html.HiddenFor(m => m.DistrictId)
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.SalesManId)
+               @Html.DisplayNameFor(model => model.SalesManDetailsModel[0].SalesManId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+               @Html.DisplayNameFor(model => model.SalesManDetailsModel[0].FirstName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                @Html.DisplayNameFor(model => model.SalesManDetailsModel[0].LastName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RepsonsabilityType)
+                @Html.DisplayNameFor(model => model.SalesManDetailsModel[0].RepsonsabilityType)
             </th>
             <th></th>
         </tr>
 
-    @foreach (var item in Model)
+    @for (var i= 0; i < Model.SalesManDetailsModel.Count; i++)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.SalesManId)
+                @Html.HiddenFor(m => m.SalesManDetailsModel[i].SalesManId)
+                @Html.HiddenFor(m => m.SalesManDetailsModel[i].DistrictId)
+                @Html.DisplayFor(m => m.SalesManDetailsModel[i].SalesManId)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(m => m.SalesManDetailsModel[i].FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(m => m.SalesManDetailsModel[i].LastName)
             </td>
             <td>
 
-                @Html.DropDownListFor(modelItem => item.FirstName, new List<SelectListItem>
+
+
+                @*@Html.DropDownListFor(modelItem => item.FirstName, new List<SelectListItem>
                    { new SelectListItem{Text="Male", Value="M"},
-                     new SelectListItem{Text="Female", Value="F"}}, "Please select")
+                     new SelectListItem{Text="Female", Value="F"}}, "Please select")*@
 
 
-                @*@Html.DisplayFor(modelItem => item.RepsonsabilityType)
-                @Html.DropDownListFor(modelItem => item.RepsonsabilityType,
-                         ViewBag.testList,
-                         "Selectd")*@
-
+                @*@Html.DisplayFor(modelItem => item.RepsonsabilityType)*@
+                @{ 
+                    if (Model.SalesManDetailsModel[i].DistrictId == Model.DistrictId) {
+                        @Html.DropDownListFor(m => m.SalesManDetailsModel[i].RepsonsabilityType, EnumHelper.GetSelectList(typeof(SM.Web.Models.SalesMen.SalesManResponsabilityTypes), Model.SalesManDetailsModel[i].RepsonsabilityType))
+                    }
+                    else
+                    {
+                        @Html.DropDownListFor(m => m.SalesManDetailsModel[i].RepsonsabilityType, EnumHelper.GetSelectList(typeof(SM.Web.Models.SalesMen.SalesManResponsabilityTypes), SM.Web.Models.SalesMen.SalesManResponsabilityTypes.None))
+                    }
+                }
 
                 @*@{string option = modelItem => item.RepsonsabilityType }
                 @Html.DropDownList("name", EnumHelper.GetSelectList(typeof(SM.Web.Models.SalesMen.SalesManResponsabilityTypes)), );*@

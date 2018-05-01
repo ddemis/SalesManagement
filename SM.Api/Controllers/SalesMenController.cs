@@ -2,7 +2,10 @@
 using SM.Api.Models.SalesMen;
 using SM.Business.Services.SalesMen;
 using SM.Business.Services.SalesMen.CustomEntities;
+using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -23,13 +26,24 @@ namespace SM.Api.Controllers
         /// </summary>
         /// <returns>A list of sales man details, belonging district and responsability type.</returns>
         [HttpGet]
-        public async Task<IList<SalesManDetailsModel>> GetSalesMenDetails()
+        public async Task<IList<SalesManDetailsModel>> GetSalesMenDetails(int districtId)
         {
-            var districts = await salesManService.GetSalesMenDetails();
+            try
+            {
+                var districts = await salesManService.GetSalesMenDetailsAsync(districtId);
 
-            IList<SalesManDetailsModel> salesManDetailsModel = MapperConfig.Mapper.Map<IList<SalesManDetailsModel>>(districts);
+                IList<SalesManDetailsModel> salesManDetailsModel = MapperConfig.Mapper.Map<IList<SalesManDetailsModel>>(districts);
 
-            return salesManDetailsModel;
+                return salesManDetailsModel;
+            }
+            catch (Exception ex)
+            {
+                var resp = new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent(ex.Message)
+                };
+                throw new HttpResponseException(resp);
+            }
         }
 
         [HttpPost]
@@ -39,11 +53,21 @@ namespace SM.Api.Controllers
             //if (!ModelState.IsValid)
             //  return BadRequest(ModelState);
 
-            IList<SalesManDetails> salesManDetails = MapperConfig.Mapper.Map<IList<SalesManDetails>>(salesMenDetailsModel);
-
-
-            var result = await salesManDistrictService.AddUpdateSalesManDistrictAndResponsability(salesManDetails);
-            return result;
+            try
+            {
+                IList<SalesManDetails> salesManDetails = MapperConfig.Mapper.Map<IList<SalesManDetails>>(salesMenDetailsModel);
+                
+                var result = await salesManDistrictService.AddUpdateSalesManDistrictAndResponsabilityAsync(salesManDetails);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                var resp = new HttpResponseMessage(HttpStatusCode.NotFound)
+                {
+                    Content = new StringContent(ex.Message)
+                };
+                throw new HttpResponseException(resp);
+            }
         }
     }
 }

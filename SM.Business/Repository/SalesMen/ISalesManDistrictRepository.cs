@@ -6,6 +6,6 @@ namespace SM.Business.Repository.SalesMen
 {
     public interface ISalesManDistrictRepository
     {
-        Task<bool> AddUpdateSalesManDistrictAndResponsability(IList<SalesManDetails> salesMenDetails);
+        Task<bool> AddUpdateSalesManDistrictAndResponsabilityAsync(IList<SalesManDetails> salesMenDetails);
     }
 }

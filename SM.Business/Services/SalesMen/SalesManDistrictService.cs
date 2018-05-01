@@ -1,5 +1,6 @@
 ﻿using SM.Business.Repository.SalesMen;
 using SM.Business.Services.SalesMen.CustomEntities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,12 +15,20 @@ namespace SM.Business.Services.SalesMen
             this.salesManDistrictRepository = salesManDistrictRepository;
         }
 
-        public async Task<bool> AddUpdateSalesManDistrictAndResponsability(IList<SalesManDetails> salesMenDetails)
+        public async Task<bool> AddUpdateSalesManDistrictAndResponsabilityAsync(IList<SalesManDetails> salesMenDetails)
         {
-            //filter sales men that are not associated with a district
-            var salesMenAssociatedWithADistrict = salesMenDetails.Where(o => o.DistrictId != null).ToList();
-            
-            return await salesManDistrictRepository.AddUpdateSalesManDistrictAndResponsability(salesMenAssociatedWithADistrict);
+            try
+            {
+                //filter sales men that are not associated with a district
+                var salesMenAssociatedWithADistrict = salesMenDetails.Where(o => o.DistrictId != null).ToList();
+
+                return await salesManDistrictRepository.AddUpdateSalesManDistrictAndResponsabilityAsync(salesMenAssociatedWithADistrict);
+            }
+            catch(Exception ex)
+            {
+                //log ex
+                throw ex;
+            }
         }
     }
 }
