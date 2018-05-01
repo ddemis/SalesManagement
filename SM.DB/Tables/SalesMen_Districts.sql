@@ -2,7 +2,7 @@
 (
 	[SalesManId]						INT		NOT NULL,
 	[DistrictId]						INT		NOT NULL,
-	[SalesManResponsabilityTypeId]		INT		NOT NULL,
+	[SalesManResponsabilityTypeId]		INT		NULL,
 
 	CONSTRAINT [PK_SalesMen_Districts] PRIMARY KEY CLUSTERED ([SalesManId] ASC, [DistrictId] ASC),
 	CONSTRAINT [FK_SalesMen_Districts_SalesMen] FOREIGN KEY ([SalesManId]) REFERENCES [dbo].[SalesMen] ([SalesManId]),

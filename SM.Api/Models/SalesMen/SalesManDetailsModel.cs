@@ -1,7 +1,7 @@
 ﻿
+using SM.Business.Entities.SalesMen;
 
-
-namespace SM.Web.Models.Districts
+namespace SM.Api.Models.SalesMen
 {
     public class SalesManDetailsModel
     {
@@ -9,7 +9,8 @@ namespace SM.Web.Models.Districts
         public int SalesUIId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public SalesManResponsabilityTypes RepsonsabilityType { get; set; }
+        public int? DistrictId { get; set; }
+        public SalesManResponsabilityTypes? RepsonsabilityType { get; set; }
 
     }
 }

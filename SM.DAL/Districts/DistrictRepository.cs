@@ -6,6 +6,7 @@ using SM.Business.Entities.Districts;
 using SM.Business.Services.Districts.CustomEntities;
 using System.Linq;
 using SM.Business.Entities.SalesMen;
+using SM.Business.Services.SalesMen.CustomEntities;
 
 namespace SM.DAL.Districts
 {
@@ -61,13 +62,14 @@ namespace SM.DAL.Districts
                                                        join salesManDistrict in context.SalesMenDistricts on salesMan.SalesManId equals salesManDistrict.SalesManId
                                                        where salesManDistrict.DistrictId == districtId
                                                        select new SalesManDetails
-                                                       {
-                                                           SalesManId = salesMan.SalesManId,
-                                                           SalesUIId = 0,
-                                                           FirstName = salesMan.FirstName,
-                                                           LastName = salesMan.LastName,
-                                                           RepsonsabilityType = (SalesManResponsabilityTypes)salesManDistrict.SalesManResponsabilityTypeId
-                                                       }).ToList();
+                                                               {
+                                                                   SalesManId = salesMan.SalesManId,
+                                                                   SalesUIId = 0,
+                                                                   FirstName = salesMan.FirstName,
+                                                                   LastName = salesMan.LastName,
+                                                                   RepsonsabilityType = (SalesManResponsabilityTypes)salesManDistrict.SalesManResponsabilityTypeId
+                                                               }
+                                                       ).ToList();
                     return districtDetails;
                 }
             }

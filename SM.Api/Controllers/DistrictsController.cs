@@ -3,6 +3,8 @@ using SM.Api.AutoMapper;
 using SM.Api.Models.Districts;
 using SM.Business.Services.Districts;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 
 namespace SM.Api.Controllers
@@ -38,9 +40,12 @@ namespace SM.Api.Controllers
         [HttpGet]
         public DistrictDetailsModel GetDistrictDetailsById(int districtId)
         {
+            //TODO - validate districtId
             var districts = districtService.GetDistrictDetailsById(districtId);
 
             DistrictDetailsModel districtDetailsModel = MapperConfig.Mapper.Map<DistrictDetailsModel>(districts);
+
+            throw new HttpResponseException(new HttpResponseMessage { StatusCode = HttpStatusCode.NotFound, ReasonPhrase = "dsfgdgdf"});
 
             return districtDetailsModel;
         }

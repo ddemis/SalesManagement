@@ -19,6 +19,7 @@ namespace SM.Web.Controllers
         {
             using (var client = new HttpClient())
             {
+                //mut url in config
                 client.BaseAddress = new Uri("http://localhost:58836/api/");
                 //HTTP GET
                 var responseTask = client.GetAsync(requestUri);

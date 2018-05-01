@@ -1,4 +1,4 @@
-﻿namespace SM.Web.Models.Districts
+﻿namespace SM.Web.Models.SalesMen
 {
     public enum SalesManResponsabilityTypes
     {

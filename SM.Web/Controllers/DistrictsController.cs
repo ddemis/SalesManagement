@@ -1,11 +1,13 @@
 ﻿
 using SM.Web.Models.Districts;
+using SM.Web.Models.SalesMen;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Web;
 using System.Web.Mvc;
+using System.Linq;
 
 namespace SM.Web.Controllers
 {
@@ -45,11 +47,30 @@ namespace SM.Web.Controllers
             }
             return View(districtstModel);
         }
+
+        [HttpGet]
         public ActionResult Details(int districtId)
         {
 
             DistrictDetailsModel districtDetailsModel = GetAsync<DistrictDetailsModel>($"Districts/GetDistrictDetailsById?districtId={districtId}");
             return View(viewName: "Details", model: districtDetailsModel);
+        }
+
+        [HttpGet]
+        public ActionResult Settings(int districtId)
+        {
+
+            // ViewBag["testList"] = Enum.GetValues(typeof(SalesManResponsabilityTypes)).AsQueryable().OfType<SalesManResponsabilityTypes>().Select(e => new SelectListItem() { Value = ((int)e).ToString(), Text = e.ToString() }).ToList();
+
+            IList<SalesManDetailsModel> salesManDetailsModel = GetAsync<IList<SalesManDetailsModel>>("SalesMen/GetSalesMenDetails");
+            return View(viewName: "Settings", model: salesManDetailsModel);
+        }
+
+        [HttpPost]
+        public ActionResult Settings(SalesManDetailsModel portocala)
+        {
+
+            return View();
         }
     }
 }

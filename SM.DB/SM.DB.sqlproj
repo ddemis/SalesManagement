@@ -67,6 +67,7 @@
     <Build Include="Tables\Districts.sql" />
     <Build Include="Tables\SalesMen_Districts.sql" />
     <Build Include="Tables\SalesManResponsabilityTypes.sql" />
+    <Build Include="StoredProcedures\SalesMen_Districts_AddUpdate.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Lookups\SalesManResponsabilityTypes.sql" />

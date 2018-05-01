@@ -1,4 +1,5 @@
-﻿using SM.Api.Models.Stores;
+﻿using SM.Api.Models.SalesMen;
+using SM.Api.Models.Stores;
 using System.Collections.Generic;
 
 namespace SM.Api.Models.Districts

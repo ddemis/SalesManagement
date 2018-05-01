@@ -1,4 +1,5 @@
 ﻿using SM.Business.Entities.Stores;
+using SM.Business.Services.SalesMen.CustomEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

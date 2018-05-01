@@ -14,7 +14,6 @@ namespace SM.Business.Services.Districts
         bool AddDistrict(District district);
         IList<District> GetAllDistricts();
         DistrictDetails GetDistrictDetailsById(int districtId);
-        //DistrictDetailsResult GetDistrictDetails(int startRowNo, int noOfRowsToGet);
     }
 
     internal class DistrictService : IDistrictService
@@ -39,10 +38,5 @@ namespace SM.Business.Services.Districts
         {
             return districtRepository.GetDistrictDetailsByDistrictId(districtId);
         }
-
-        //public DistrictDetailsResult GetDistrictDetails(int startRowNo, int noOfRowsToGet)
-        //{
-        //    return districtRepository.GetDistrictDetails(startRowNo, noOfRowsToGet);
-        //}
     }
 }

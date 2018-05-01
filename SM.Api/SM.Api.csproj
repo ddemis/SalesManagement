@@ -203,13 +203,14 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="AutoMapper\MapperConfig.cs" />
     <Compile Include="Controllers\DistrictsController.cs" />
+    <Compile Include="Controllers\SalesMenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Districts\DistrictDetailsModel.cs" />
     <Compile Include="Models\Districts\DistrictDetailsResultModel.cs" />
     <Compile Include="Models\Districts\DistrictModel.cs" />
-    <Compile Include="Models\Districts\SalesManDetailsModel.cs" />
+    <Compile Include="Models\SalesMen\SalesManDetailsModel.cs" />
     <Compile Include="Models\Stores\StoreModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -266,6 +267,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\SalesMen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

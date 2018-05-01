@@ -1,0 +1,84 @@
+﻿@model IEnumerable<SM.Web.Models.SalesMen.SalesManDetailsModel>
+
+using System.Linq;
+@{
+    ViewBag.Title = "Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Settings</h2>
+
+<p>
+  
+</p>
+@using (Html.BeginForm("Settings", "Districts", FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SalesManId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RepsonsabilityType)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesManId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+
+                @Html.DropDownListFor(modelItem => item.FirstName, new List<SelectListItem>
+                   { new SelectListItem{Text="Male", Value="M"},
+                     new SelectListItem{Text="Female", Value="F"}}, "Please select")
+
+
+                @*@Html.DisplayFor(modelItem => item.RepsonsabilityType)
+                @Html.DropDownListFor(modelItem => item.RepsonsabilityType,
+                         ViewBag.testList,
+                         "Selectd")*@
+
+
+                @*@{string option = modelItem => item.RepsonsabilityType }
+                @Html.DropDownList("name", EnumHelper.GetSelectList(typeof(SM.Web.Models.SalesMen.SalesManResponsabilityTypes)), );*@
+
+                @*@Html.DropDownList("MyType", EnumHelper.GetSelectList(typeof(SM.Web.Models.SalesMen.SalesManResponsabilityTypes)), "Select",  new { @class = "form-control" })*@
+                @*@Html.RadioButtonFor(item =>  SM.Web.Models.SalesMen.SalesManResponsabilityTypes.Primary) @SM.Web.Models.SalesMen.SalesManResponsabilityTypes.Primary.ToString()
+                @Html.RadioButtonFor(item => item.RepsonsabilityType, SM.Web.Models.SalesMen.SalesManResponsabilityTypes.Secondary) @SM.Web.Models.SalesMen.SalesManResponsabilityTypes.Secondary.ToString()*@
+               @* @Html.DisplayFor(modelItem => item.RepsonsabilityType)*@
+            </td>
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>*@
+
+            <td>
+                
+            </td>
+                
+        </tr>
+    }
+
+    </table>
+
+    <hr>
+    
+    <input type="submit" value="Submit"/>
+}

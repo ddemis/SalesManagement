@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using SM.Api.AutoMapper;
 using SM.Api.Models.Districts;
+using SM.Api.Models.SalesMen;
 using SM.Api.Models.Stores;
 using SM.Business.Entities.Districts;
 using SM.Business.Entities.Stores;
 using SM.Business.Services.Districts.CustomEntities;
+using SM.Business.Services.SalesMen.CustomEntities;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SM.Api.App_Start
 {

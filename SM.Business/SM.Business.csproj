@@ -52,7 +52,7 @@
     <Compile Include="Repository\Stores\IStoreRepository.cs" />
     <Compile Include="Services\Districts\CustomEntities\DistrictDetails.cs" />
     <Compile Include="Services\Districts\CustomEntities\DistrictDetailsResult.cs" />
-    <Compile Include="Services\Districts\CustomEntities\SalesManDetails.cs" />
+    <Compile Include="Services\SalesMen\CustomEntities\SalesManDetails.cs" />
     <Compile Include="Services\Districts\DistrictService.cs" />
     <Compile Include="Services\SalesMen\SalesManDistrictService.cs" />
     <Compile Include="Services\SalesMen\SalesManService.cs" />

@@ -1,12 +1,10 @@
-﻿using System;
+﻿using SM.Business.Services.SalesMen.CustomEntities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SM.Business.Repository.SalesMen
 {
-    public interface ISalesManRepository //: IDisposable
+    public interface ISalesManRepository
     {
+        IList<SalesManDetails> GetSalesMenDetails();
     }
 }

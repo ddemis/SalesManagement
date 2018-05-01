@@ -494,5 +494,11 @@
             <param name="districtId">District Id</param>
             <returns>All the stores belonging to a district and the sales men associated with the district.</returns>
         </member>
+        <member name="M:SM.Api.Controllers.SalesMenController.GetSalesMenDetails">
+            <summary>
+            Get all sales men with details about belonging districts.
+            </summary>
+            <returns>A list of sales man details, belonging district and responsability type.</returns>
+        </member>
     </members>
 </doc>

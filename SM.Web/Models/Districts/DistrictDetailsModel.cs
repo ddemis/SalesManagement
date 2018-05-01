@@ -1,4 +1,5 @@
 ﻿
+using SM.Web.Models.SalesMen;
 using SM.Web.Models.Stores;
 using System.Collections.Generic;
 

@@ -24,14 +24,11 @@ namespace SM.DIContainer
             kernel.Bind<IDistrictRepository>().To<DistrictRepository>();
             kernel.Bind<IDistrictService>().To<DistrictService>();
 
-            kernel.Bind<SalesManDisctrictRepository>().To<SalesManDisctrictRepository>();
+            kernel.Bind<ISalesManDistrictRepository>().To<SalesManDistrictRepository>();
             kernel.Bind<ISalesManDistrictService>().To<SalesManDistrictService>();
 
             kernel.Bind<ISalesManRepository>().To<SalesManRepository>();
-            kernel.Bind<ISalesManService>().To<SalesManService>();
-
-            kernel.Bind<ISalesManDistrictRepository>().To<SalesManDisctrictRepository>();
-            kernel.Bind<ISalesManDistrictService>().To<ISalesManDistrictService>();
+            kernel.Bind<ISalesManService>().To<SalesManService>();;
 
             kernel.Bind<IStoreRepository>().To<StoreRepository>();
             kernel.Bind<IStoreService>().To<StoreService>();

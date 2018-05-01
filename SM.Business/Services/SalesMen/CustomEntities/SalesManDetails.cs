@@ -1,11 +1,6 @@
 ﻿using SM.Business.Entities.SalesMen;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SM.Business.Services.Districts.CustomEntities
+namespace SM.Business.Services.SalesMen.CustomEntities
 {
     public class SalesManDetails
     {
@@ -13,7 +8,8 @@ namespace SM.Business.Services.Districts.CustomEntities
         public int SalesUIId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public SalesManResponsabilityTypes RepsonsabilityType { get; set; }
+        public int? DistrictId { get; set; }
+        public SalesManResponsabilityTypes? RepsonsabilityType { get; set; }
 
     }
 }

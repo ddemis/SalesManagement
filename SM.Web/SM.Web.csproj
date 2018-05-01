@@ -146,6 +146,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DistrictManagementController.cs" />
     <Compile Include="Controllers\DistrictsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -154,8 +155,8 @@
     <Compile Include="Models\Districts\DistrictDetailsModel.cs" />
     <Compile Include="Models\Districts\DistrictDetailsResultModel.cs" />
     <Compile Include="Models\Districts\DistrictModel.cs" />
-    <Compile Include="Models\Districts\SalesManDetailsModel.cs" />
-    <Compile Include="Models\Districts\SalesManResponsabilityTypes.cs" />
+    <Compile Include="Models\SalesMen\SalesManDetailsModel.cs" />
+    <Compile Include="Models\SalesMen\SalesManResponsabilityTypes.cs" />
     <Compile Include="Models\Stores\StoreModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -198,6 +199,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Districts\Index.cshtml" />
     <Content Include="Views\Districts\Details.cshtml" />
+    <Content Include="Views\DistrictManagement\Index.cshtml" />
+    <Content Include="Views\Districts\Settings.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
