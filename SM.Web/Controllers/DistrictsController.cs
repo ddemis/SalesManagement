@@ -1,8 +1,6 @@
-﻿
-using SM.Web.Models.Districts;
+﻿using SM.Web.Models.Districts;
 using SM.Web.Models.SalesMen;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 
@@ -40,14 +38,11 @@ namespace SM.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Settings(DistrictSettingsModel districtSettingsModel)
         {
-            //TODO
-            //if (!ModelState.IsValid)
-            //  return BadRequest(ModelState);
-
             districtSettingsModel.SalesManDetailsModel.ForEach(o => o.DistrictId = districtSettingsModel.DistrictId);
             var test = await PostAsync("SalesMen/UpdateSalesManDistrictAndResponsability", districtSettingsModel.SalesManDetailsModel);
 
             return RedirectToAction("Index", "Districts");
+            
         }
     }
 }

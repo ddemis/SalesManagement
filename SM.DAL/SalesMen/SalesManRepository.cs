@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace SM.DAL.SalesMen
 {
     internal class SalesManRepository : ISalesManRepository
-    {//where salesManDistrict.DistrictId == 1
+    {
         public async Task<IList<SalesManDetails>> GetSalesMenDetailsAsync(int districtId)
         {
             IList<SalesManDetails> salesManDetails = new List<SalesManDetails>();
@@ -18,7 +18,6 @@ namespace SM.DAL.SalesMen
             {
                 salesManDetails = await (from salesMan in context.SalesMen
                                         join salesManDistrict in context.SalesMenDistricts on salesMan.SalesManId equals salesManDistrict.SalesManId
-                                       
                                         into g
                                         from result in g.Where(f => f.DistrictId == districtId).DefaultIfEmpty()
                                         select new SalesManDetails

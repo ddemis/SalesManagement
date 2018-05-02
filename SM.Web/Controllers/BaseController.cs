@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SM.Web.Controllers
@@ -18,7 +15,7 @@ namespace SM.Web.Controllers
             {
                 //mut url in config
                 client.BaseAddress = new Uri("http://localhost:58836/api/");
-                //HTTP GET
+                
                 var responseTask = client.GetAsync(requestUri);
                 responseTask.Wait();
 
@@ -26,26 +23,12 @@ namespace SM.Web.Controllers
                 if (result.IsSuccessStatusCode)
                 {
                     return await result.Content.ReadAsAsync<T>();
-                    //var readTask = result.Content.ReadAsAsync<T>();
-                    //readTask.Wait();
-
-                    //return readTask.Result;
                 }
                 else
                 {
-                    //TODO - fix this - new object that contains T and status code
-                    throw new Exception();
+                    //display request message to user
+                    return default(T);
                 }
-                //else //web api sent error response 
-                //{
-                //    //log response status here..
-
-                //    //students = Enumerable.Empty<StudentViewModel>();
-
-                //    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-
-
-                //}
             }
         }
 
@@ -65,26 +48,12 @@ namespace SM.Web.Controllers
                 if (result.IsSuccessStatusCode)
                 {
                     return await result.Content.ReadAsAsync<bool>();
-                    //var readTask = result.Content.ReadAsAsync<T>();
-                    //readTask.Wait();
-
-                    //return readTask.Result;
                 }
                 else
                 {
-                    //TODO - fix this - new object that contains T and status code
-                    throw new Exception();
+                    //display request message to user
+                    return false;
                 }
-                //else //web api sent error response 
-                //{
-                //    //log response status here..
-
-                //    //students = Enumerable.Empty<StudentViewModel>();
-
-                //    ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-
-
-                //}
             }
         }
     }

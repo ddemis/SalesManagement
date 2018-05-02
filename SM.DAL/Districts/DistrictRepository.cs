@@ -37,22 +37,24 @@ namespace SM.DAL.Districts
             DistrictDetails districtDetails = new DistrictDetails();
             using (var context = new RepositoryContext())
             {
-                districtDetails.DistrictId = districtId;
-                districtDetails.Stores = context.Stores.Where(o => o.DistrictId == districtId).ToList();
-                districtDetails.SalesMenDetails = await (  from salesMan in context.SalesMen
-                                                            join salesManDistrict in context.SalesMenDistricts on salesMan.SalesManId equals salesManDistrict.SalesManId
-                                                            where salesManDistrict.DistrictId == districtId
-                                                            select new SalesManDetails
-                                                                    {
-                                                                        SalesManId = salesMan.SalesManId,
-                                                                        SalesUIId = 0,
-                                                                        FirstName = salesMan.FirstName,
-                                                                        LastName = salesMan.LastName,
-                                                                        RepsonsabilityType = (SalesManResponsabilityTypes)salesManDistrict.SalesManResponsabilityTypeId
-                                                                    }
-                                                            ).ToListAsync();
-                return districtDetails;
+                if (context.Districts.Any(o => o.DistrictId == districtId))
+                {
+                    districtDetails.DistrictId = districtId;
+                    districtDetails.Stores = context.Stores.Where(o => o.DistrictId == districtId).ToList();
+                    districtDetails.SalesMenDetails = await (from salesMan in context.SalesMen
+                                                             join salesManDistrict in context.SalesMenDistricts on salesMan.SalesManId equals salesManDistrict.SalesManId
+                                                             where salesManDistrict.DistrictId == districtId
+                                                             select new SalesManDetails
+                                                             {
+                                                                 SalesManId = salesMan.SalesManId,
+                                                                 SalesUIId = 0,
+                                                                 FirstName = salesMan.FirstName,
+                                                                 LastName = salesMan.LastName,
+                                                                 RepsonsabilityType = (SalesManResponsabilityTypes)salesManDistrict.SalesManResponsabilityTypeId
+                                                             }).ToListAsync();
+                }                
             }
+            return districtDetails;
         }
     }
 }
