@@ -22,7 +22,7 @@ namespace SM.DAL.SalesMen
                 item.Add(new XElement("RepsonsabilityTypeId", salesManDetails.RepsonsabilityType.HasValue ? (int)salesManDetails.RepsonsabilityType : (object) DBNull.Value));
 
                 salesMenDetailsXml.Add(item);
-            }
+            }ertertert
 
             SqlParameter salesMenDetailsXmlParam = new SqlParameter("@salesMenDetailsXml", salesMenDetailsXml.ToString(SaveOptions.DisableFormatting));
 
