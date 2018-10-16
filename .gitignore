@@ -14,3 +14,7 @@ obj/
 bin-release/
 bin-debug/
 /packages/*
+/.vs/SalesManagement/v15/Server/sqlite3/storage.ide-wal
+/.vs/SalesManagement/v15/Server/sqlite3/storage.ide-shm
+/.vs/SalesManagement/v15/Server/sqlite3/storage.ide
+/.vs/SalesManagement/v15/Server/sqlite3/db.lock
